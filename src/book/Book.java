@@ -8,7 +8,7 @@ public abstract class Book implements Bookinput {
 	protected String bookname;
 	protected String author;
 	protected String genre;
-	protected int page;
+	protected String page;
 	protected String launch;
 
 	public Book() {
@@ -24,7 +24,7 @@ public abstract class Book implements Bookinput {
 		this.genre = genre;
 	}
 
-	public Book (String bookname, String author, String genre, int page, String launch) {
+	public Book (String bookname, String author, String genre, String page, String launch) {
 		this.bookname = bookname;
 		this.author = author;
 		this.genre = genre;
@@ -32,7 +32,7 @@ public abstract class Book implements Bookinput {
 		this.launch = launch;
 	}
 
-	public Book (BookKind kind ,String bookname, String author, String genre, int page, String launch) {
+	public Book (BookKind kind ,String bookname, String author, String genre, String page, String launch) {
 		this.kind = kind;
 		this.bookname = bookname;
 		this.author = author;
@@ -73,12 +73,12 @@ public abstract class Book implements Bookinput {
 		this.genre = genre;
 	}
 
-	public int getPage() {
+	public String getPage() {
 		return page;
 	}
 
-	public void setPage(int page) throws PageException {
-		if(page %2 == 0 || page %2 == 1) {
+	public void setPage(String page) throws PageException {
+		if(!page.contains("ÂÊ")) {
 			throw new PageException(); 
 		}
 		this.page = page;
@@ -113,14 +113,14 @@ public abstract class Book implements Bookinput {
 	}
 
 	public void setBookPage(Scanner input) {
-		int page = 0;
-		while (page %2 == 0 || page %2 == 1) {
+		String page = "";
+		while (!page.contains("ÂÊ")) {
 			System.out.print("Edit Page of Book:");
-			page = input.nextInt();
+			page = input.next();
 			try {
 				this.setPage(page);
 			} catch (PageException e) {
-				System.out.println("**Incorrect Page Format. Please enter a number.**");
+				System.out.println("**Incorrect Page Format. Please put the sign 'ÂÊ' in it. **");
 			}
 		}
 	}

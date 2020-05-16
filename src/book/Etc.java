@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Etc extends PoetryBook {
 
 	protected String similarGenre;
-	protected int averagePage;
+	protected String averagePage;
 	protected String approximateLaunch;
 
 	public Etc(BookKind kind) {

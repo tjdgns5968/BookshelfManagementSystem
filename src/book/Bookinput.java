@@ -16,7 +16,7 @@ public interface Bookinput {
 
 	public void setGenre(String genre);
 
-	public void setPage(int page) throws PageException;
+	public void setPage(String page) throws PageException;
 
 	public void setLaunch(String launch);
 
