@@ -1,9 +1,15 @@
 package book;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import exception.PageException;
 
-public abstract class Book implements Bookinput {
+public abstract class Book implements Bookinput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1240613899090120649L;
+	
 	protected BookKind kind = BookKind.Englishliterature;
 	protected String bookname;
 	protected String author;
@@ -95,19 +101,19 @@ public abstract class Book implements Bookinput {
 	public abstract void printInfo();
 
 	public void setBookname(Scanner input) {
-		System.out.print("Edit Book Name:");
+		System.out.print("Book Name:");
 		String Bookname = input.next();
 		this.setBookname(Bookname);
 	}
 
 	public void setBookAuthor(Scanner input) {
-		System.out.print("Edit Author of Book:");
+		System.out.print("Author of Book:");
 		String author = input.next();
 		this.setAuthor(author);
 	}
 
 	public void setBookGenre(Scanner input) {
-		System.out.print("Edit Genre of Book:");
+		System.out.print("Genre of Book:");
 		String genre = input.next();
 		this.setGenre(genre);
 	}
@@ -115,7 +121,7 @@ public abstract class Book implements Bookinput {
 	public void setBookPage(Scanner input) {
 		String page = "";
 		while (!page.contains("ÂÊ")) {
-			System.out.print("Edit Page of Book:");
+			System.out.print("Page of Book:");
 			page = input.next();
 			try {
 				this.setPage(page);
@@ -126,7 +132,7 @@ public abstract class Book implements Bookinput {
 	}
 
 	public void setBookLaunch(Scanner input) {
-		System.out.print("Edit launch date of Book:");
+		System.out.print("launch date of Book:");
 		String launch = input.next();
 		this.setLaunch(launch);	
 	}
