@@ -1,0 +1,61 @@
+package gui;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
+public class BookAdder extends JPanel {
+	WindowFrame frame; 
+	
+	public BookAdder(WindowFrame frame) {
+		this.frame = frame;
+		
+		JPanel panel = new JPanel(new SpringLayout());
+		panel.setLayout(new SpringLayout());
+
+		JLabel labelName = new JLabel("BookName: ",JLabel.TRAILING);
+		JTextField fieldName = new JTextField(10);
+		labelName.setLabelFor(fieldName);
+		panel.add(labelName);
+		panel.add(fieldName);
+
+		JLabel labelAuthor = new JLabel("Author: ",JLabel.TRAILING);
+		JTextField fieldAuthor = new JTextField(10);
+		labelAuthor.setLabelFor(fieldAuthor);
+		panel.add(labelAuthor);
+		panel.add(fieldAuthor);
+
+		JLabel labelGenre = new JLabel("Genre: ",JLabel.TRAILING);
+		JTextField fieldGenre = new JTextField(10);
+		labelGenre.setLabelFor(fieldGenre);
+		panel.add(labelGenre);
+		panel.add(fieldGenre);
+
+		JLabel labelPage = new JLabel("Page: ",JLabel.TRAILING);
+		JTextField fieldPage = new JTextField(10);
+		labelPage.setLabelFor(fieldPage);
+		panel.add(labelPage);
+		panel.add(fieldPage);
+
+		JLabel labelLaunchDate = new JLabel("LaunchDate: ",JLabel.TRAILING);
+		JTextField fieldLaunchDate = new JTextField(10);
+		labelLaunchDate.setLabelFor(fieldLaunchDate);
+		panel.add(labelLaunchDate);
+		panel.add(fieldLaunchDate);
+
+		panel.add(new JButton("save"));
+		panel.add(new JButton("cancel"));
+
+
+
+		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
+
+		
+		this.add(panel);
+		this.setVisible(true);
+	}
+
+}
