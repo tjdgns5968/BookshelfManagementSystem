@@ -1,16 +1,30 @@
 package gui;
 
+import java.util.Vector;
+
 import javax.swing.JFrame;
+
+
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class BookViewer extends JPanel {
-	WindowFrame frame; 
+import book.Bookinput;
+import manager.BookManager;
 
-	public BookViewer(WindowFrame frame) {
+
+public class BookViewer extends JPanel {
+	
+	WindowFrame frame; 
+	BookManager bookManager;
+
+	public BookViewer(WindowFrame frame, BookManager bookManager) {
 		this.frame = frame;
+        this.bookManager = bookManager;   
+        
+        System.out.println("***" + bookManager.size() + "***");
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("Name");
@@ -18,6 +32,17 @@ public class BookViewer extends JPanel {
 		model.addColumn("Genre");
 		model.addColumn("Page");
 		model.addColumn("LaunchDate");
+		
+		for (int i=0; i< bookManager.size(); i++) {
+			Vector row = new Vector();
+			Bookinput bi = bookManager.get(i);
+			row.add(bi.getBookname());
+			row.add(bi.getAuthor());
+			row.add(bi.getGenre());
+			row.add(bi.getPage());
+			row.add(bi.getLaunch());
+			model.addRow(row);
+		}
 
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
