@@ -1,20 +1,32 @@
 package gui;
 
 import javax.swing.JFrame;
+
+
+
 import javax.swing.JPanel;
 
+import manager.BookManager;
+
+
 public class WindowFrame extends JFrame {
-	MenuSelection menuselection ;
-	BookAdder bookadder ;
-	BookViewer bookviewer ; 
+	
+	BookManager bookManager;
+	
+	MenuSelection menuselection;
+	BookAdder bookadder;
+	BookViewer bookviewer;
 
-	public WindowFrame() {
-		this.menuselection = new MenuSelection(this);
-		this.bookadder = new BookAdder(this);
-		this.bookviewer = new BookViewer(this); 
-
+	public WindowFrame(BookManager bookManager) {
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("My Frame");
+		
+		this.bookManager = bookManager;
+		this.menuselection = new MenuSelection(this);
+		this.bookadder = new BookAdder(this);
+		this.bookviewer = new BookViewer(this, this.bookManager);
+
 
 		this.setupPanel(menuselection);
 
