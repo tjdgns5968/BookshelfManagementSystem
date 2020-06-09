@@ -11,12 +11,20 @@ public interface Bookinput {
 	public void getUserInput(Scanner input);
 
 	public void setBookname(String bookname);
+	
+	public String getAuthor();
 
 	public void setAuthor(String author);
+	
+	public String getGenre();
 
 	public void setGenre(String genre);
+	
+	public String getPage();
 
 	public void setPage(String page) throws PageException;
+	
+	public String getLaunch();
 
 	public void setLaunch(String launch);
 
